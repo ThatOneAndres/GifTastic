@@ -1,13 +1,13 @@
 var apiKey = "cd596e6a6f35472090dc58cfbb090200";
 var url = "http://api.giphy.com/v1/gifs/search?";
-var arrayOfGifs = ["MidoriYA", "Naruto", "Goku", "Chidori", "Attack on Titan", "Super Saiyan", "Rinnegan"]
+var arrayOfGifs = ["All Might", "Code Geass", "Kamehameha", "Chidori", "Attack on Titan", "Super Saiyan", "Rinnegan", "Death Note"]
 
 var printButtons = function(arrayButtons){
 	for (var i = 0; i < arrayButtons.length; i++){
 		var button = $("<button>");
 		button.text(arrayButtons[i]);
 		button.attr("value",arrayButtons[i]);
-		button.addClass("giph-button");
+		button.addClass("giph-button btn btn-primary");
 		$("#giph-buttons").append(button);
 	}
 };
@@ -32,38 +32,60 @@ $(document).ready(function(){
 
 	$(document).on("click",".giph-button", function(){
 		var name = $(this).attr("value");
+		$(".all-giphs").remove();
 		url += $.param({
 			'api_key': apiKey,
 			'q': name
 		})
-		console.log(url);
 		$.ajax({
 			url: url,
 			method: 'GET'
 		}).done(function(result){
 			var arrayObjects = result.data;
+			var rowNum;
 			for (var i = 0; i < 12; i++){
 				if (i%4 === 0){
-					var imageRow = $("<div class = 'row giph-row'>");
+					rowNum = i;
+					var row = "row all-giphs giph-row"+i;
+					var imageRow = $("<div class = '"+row+"'>");
 					$("#search-inputs").after(imageRow);
 				}
-				var imageCol = $("<div class = 'col-md-3'>");
+				var imageCol = $("<div class = 'col-md-3 col-sm-6'>");
 				var rating = $("<div>");
 				rating.text("Ratings: " + arrayObjects[i].rating);
 				imageCol.append(rating);
 				var imageSet = arrayObjects[i].images;
-				var image = $("<img>");
+				var image = $("<img class = 'center-block'>");
 				image.attr("data-still",imageSet.fixed_height_still.url);
 				image.attr("data-move",imageSet.fixed_height.url);
+				image.attr("data-state", "still");
 				image.attr("src",imageSet.fixed_height_still.url);
 				image.addClass("giph");
 				imageCol.append(image);
-				$(".giph-row").append(imageCol);
+				$(".giph-row"+ rowNum).append(imageCol);
 
 			}
-
 		});
 	});
+
+	$(document).on("click",".giph",function(){
+		
+		$("#movin").data("state", "still")
+		$("#movin").attr("src", $("#movin").data("still"));
+		$("#movin").removeAttr("id");
+
+		if ($(this).data("state") === "still"){
+			$(this).attr("src",$(this).data("move"));
+			$(this).data("state", "move");
+			$(this).attr("id", "movin");
+		}
+		else{
+			$(this).attr("src",$(this).data("still"));
+			$(this).attr("state", "still");
+		}
+	});
+
+
 
 });
 

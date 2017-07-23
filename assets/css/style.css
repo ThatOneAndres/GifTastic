@@ -1,0 +1,20 @@
+html{
+	height: 100%;
+}
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 100%; }
+}
+body{
+	height: 100%;
+	background-image: url("../images/vintage-leaves.png");
+	background-repeat: repeat;
+	background-size: cover;
+	background-position: 0px 0px;
+	color: black;
+	margin: 0;
+	animation: animatedBackground 40s linear infinite;
+}
+#giph-buttons{
+	text-align: center;
+}
