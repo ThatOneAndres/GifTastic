@@ -1,5 +1,5 @@
 var apiKey = "cd596e6a6f35472090dc58cfbb090200";
-var url = "http://api.giphy.com/v1/gifs/search?";
+var url = "https://api.giphy.com/v1/gifs/search?";
 var arrayOfGifs = ["All Might", "Code Geass", "Kamehameha", "Chidori", "Attack on Titan", "Super Saiyan", "Rinnegan", "Death Note"]
 
 var printButtons = function(arrayButtons){
