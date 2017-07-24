@@ -69,19 +69,26 @@ $(document).ready(function(){
 	});
 
 	$(document).on("click",".giph",function(){
-		
-		$("#movin").data("state", "still")
-		$("#movin").attr("src", $("#movin").data("still"));
-		$("#movin").removeAttr("id");
-
-		if ($(this).data("state") === "still"){
-			$(this).attr("src",$(this).data("move"));
-			$(this).data("state", "move");
-			$(this).attr("id", "movin");
-		}
-		else{
-			$(this).attr("src",$(this).data("still"));
-			$(this).attr("state", "still");
+		if (typeof $("#movin")[0] !== "undefined"){
+			if ($(this)[0].outerHTML !== $("#movin")[0].outerHTML){
+				$("#movin").attr("data-state", "still")
+				$("#movin").attr("src", $("#movin").data("still"));
+				$("#movin").removeAttr("id");
+				$(this).attr("src",$(this).attr("data-move"));
+				$(this).attr("data-state", "move");
+				$(this).attr("id", "movin");
+			}else{
+				$("#movin").attr("data-state", "still")
+				$("#movin").attr("src", $("#movin").data("still"));
+				$("#movin").removeAttr("id");
+				}
+		}else{
+				$("#movin").attr("data-state", "still")
+				$("#movin").attr("src", $("#movin").data("still"));
+				$("#movin").removeAttr("id");
+				$(this).attr("src",$(this).attr("data-move"));
+				$(this).attr("data-state", "move");
+				$(this).attr("id", "movin");
 		}
 	});
 
