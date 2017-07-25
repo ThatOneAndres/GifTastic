@@ -55,7 +55,7 @@ $(document).ready(function(){
 				}
 				var imageCol = $("<div class = 'col-md-3 col-sm-6'>");
 				var rating = $("<div class = 'rating'>");
-				rating.text("Ratings: " + arrayObjects[i].rating);
+				rating.text("Ratings: " + arrayObjects[i].rating.toUpperCase());
 				imageCol.append(rating);
 				var imageSet = arrayObjects[i].images;
 				var image = $("<img class = 'center-block'>");
@@ -95,7 +95,7 @@ $(document).ready(function(){
 				}
 				var imageCol = $("<div class = 'col-md-3 col-sm-6'>");
 				var rating = $("<div class = 'rating'>");
-				rating.text("Ratings: " + arrayObjects[i].rating);
+				rating.text("Ratings: " + arrayObjects[i].rating.toUpperCase());
 				imageCol.append(rating);
 				var imageSet = arrayObjects[i].images;
 				var image = $("<img class = 'center-block'>");
