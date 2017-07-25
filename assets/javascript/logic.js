@@ -22,6 +22,7 @@ $(document).ready(function(){
 	$("#add-button").on("click",function(event){
 		event.preventDefault();
 		var word = $("#animeWord").val().trim();
+		$("#animeWord").val("");
 		if (word !== ""){
 			$("#giph-buttons").empty();
 			arrayOfGifs.push(word);
@@ -33,17 +34,20 @@ $(document).ready(function(){
 	$(document).on("click",".giph-button", function(){
 		var name = $(this).attr("value");
 		$(".all-giphs").remove();
+		var apiKey = "cd596e6a6f35472090dc58cfbb090200";
+		var url = "https://api.giphy.com/v1/gifs/search?";
 		url += $.param({
 			'api_key': apiKey,
 			'q': name
 		})
+
 		$.ajax({
 			url: url,
 			method: 'GET'
 		}).done(function(result){
 			var arrayObjects = result.data;
 			var rowNum;
-			for (var i = 0; i < 12; i++){
+			for (var i = 0; i < 16; i++){
 				if (i%4 === 0){
 					rowNum = i;
 					var row = "row all-giphs giph-row"+i;
@@ -51,7 +55,7 @@ $(document).ready(function(){
 					$("#search-inputs").after(imageRow);
 				}
 				var imageCol = $("<div class = 'col-md-3 col-sm-6'>");
-				var rating = $("<div>");
+				var rating = $("<div class = 'rating'>");
 				rating.text("Ratings: " + arrayObjects[i].rating);
 				imageCol.append(rating);
 				var imageSet = arrayObjects[i].images;
@@ -69,6 +73,20 @@ $(document).ready(function(){
 	});
 
 	$(document).on("click",".giph",function(){
+
+		//If you want to have giphs running independent of eachother
+		// if (!$(this).hasClass("movin")){
+		// 		$(this).attr("src",$(this).attr("data-move"));
+		// 		$(this).attr("data-state", "move");
+		// 		$(this).addClass("movin");
+		// }else{
+		// 		$(this).attr("data-state", "still")
+		// 		$(this).attr("src", $(this).data("still"));
+		// 		$(this).removeClass("movin");
+		// }
+
+
+		// If you want to have giphs play dependent on eachother (ie when one plays the other stops)
 		if (typeof $("#movin")[0] !== "undefined"){
 			if ($(this)[0].outerHTML !== $("#movin")[0].outerHTML){
 				$("#movin").attr("data-state", "still")

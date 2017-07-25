@@ -15,10 +15,25 @@ body{
 	margin: 0;
 	animation: animatedBackground 40s linear infinite;
 }
+#search-inputs{
+	margin-top: 10px;
+}
 #giph-buttons{
 	text-align: center;
 }
 .giph{
 	width: 250px;
 	height: 200px;
+}
+#instruction{
+	font-family: 'Work Sans', sans-serif;
+	font-size: 18px;
+}
+.rating{
+	font-weight: bold;
+	text-align: center;
+	
+	font-family: 'Work Sans', sans-serif;
+	font-size: 22px;
+	color: dodgerblue;
 }
