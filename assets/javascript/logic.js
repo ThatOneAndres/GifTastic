@@ -32,6 +32,7 @@ $(document).ready(function(){
 
 	$(document).on("click",".giph-button", function(){
 		var name = $(this).attr("value");
+		$("#click-ins").remove();
 		$(".all-giphs").remove();
 		var apiKey = "cd596e6a6f35472090dc58cfbb090200";
 		var urlSearch = "https://api.giphy.com/v1/gifs/search?";
@@ -72,6 +73,7 @@ $(document).ready(function(){
 	});
 
 	$(document).on("click","#trend-button", function(event){
+		$("#click-ins").remove();
 		$(".all-giphs").remove();
 		event.preventDefault();
 		var apiKey = "cd596e6a6f35472090dc58cfbb090200";

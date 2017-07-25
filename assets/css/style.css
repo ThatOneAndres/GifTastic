@@ -24,6 +24,7 @@ body{
 .giph{
 	width: 250px;
 	height: 200px;
+	padding-bottom: 10px;
 }
 #instruction{
 	font-family: 'Work Sans', sans-serif;
@@ -36,4 +37,7 @@ body{
 	font-family: 'Work Sans', sans-serif;
 	font-size: 22px;
 	color: dodgerblue;
+}
+#click-ins{
+	font-weight: bold;
 }
