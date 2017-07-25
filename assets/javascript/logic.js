@@ -47,7 +47,7 @@ $(document).ready(function(){
 		}).done(function(result){
 			var arrayObjects = result.data;
 			var rowNum;
-			for (var i = 0; i < 16; i++){
+			for (var i = 0; i < 24; i++){
 				if (i%4 === 0){
 					rowNum = i;
 					var row = "row all-giphs giph-row"+i;
