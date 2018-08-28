@@ -1,4 +1,6 @@
 # GifTastic
+## Website
+https://thatoneandres.github.io/GifTastic/
 ## About
 GifTastic is a website that allows you to generate giphs pulled from giphy's api. 
 1. Upon entering GifTastic you see buttons on the top. Upon clicking on a button 24 giphs will generate.
